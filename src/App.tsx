@@ -1,10 +1,11 @@
 import React from 'react';
+import Login from './view/Login';
 
 function App() {
   return (
     <div className="h-screen m-auto max-w-md bg-gray-300">
       <div className="flex flex-col h-screen">
-        <p className="font-bold text-white">Test Root App</p>
+        <Login />
       </div>
     </div>
   );
