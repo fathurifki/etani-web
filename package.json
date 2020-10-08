@@ -12,7 +12,11 @@
     "@types/react-dom": "^16.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "superagent": "^6.1.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
