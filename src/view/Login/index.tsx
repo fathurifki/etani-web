@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -14,8 +15,10 @@ const Login = () => {
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"></input>
                 </div>
                     <br/>
+                <Link to="/home">
                 <button className="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg
                 px-6 py-3 block shadow-xl hover:text-white hover:bg-black">Login</button>
+                </Link>
                 <span className="flex flex-col justify-center items-center mt-5">Belum Punya Akun ? Daftar Disini</span>
             </div>
         </div>
