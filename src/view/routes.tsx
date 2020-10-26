@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { Route } from 'react-router'
 import Login from './Login';
 import Register from './Register';
 import Home from './Home';
@@ -7,8 +5,9 @@ import DetailProduct from './DetailProduct';
 import Cart from './Cart';
 import Sell from './Sell';
 import Product from './Product';
+import Profile from './Profile';
 
-const routes = [
+const AppRoutes = [
     {
         path: '/login',
         component: Login
@@ -37,22 +36,11 @@ const routes = [
         path: '/sell',
         component: Sell 
     },
+    {
+        path: '/profile',
+        component: Profile 
+    },
 
 ]
 
-const handleRouter = () => {
-    return (
-        <div>
-            {routes.map(({ path, component }, key) => 
-                <Route 
-                  exact 
-                  path={path} 
-                  component={component} 
-                  key={key} 
-                />
-            )}
-        </div>
-    )
-}
-
-export default handleRouter
+export default AppRoutes
