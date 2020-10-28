@@ -1,11 +1,11 @@
-import Login from './Login';
 import Register from './Register';
-import Home from './Home';
 import DetailProduct from './DetailProduct';
 import Cart from './Cart';
 import Sell from './Sell';
 import Product from './Product';
 import Profile from './Profile';
+import Login from './Login';
+import Home from './Home';
 
 const AppRoutes = [
     {
@@ -34,11 +34,11 @@ const AppRoutes = [
     },
     {
         path: '/sell',
-        component: Sell 
+        component: Sell
     },
     {
         path: '/profile',
-        component: Profile 
+        component: Profile
     },
 
 ]
