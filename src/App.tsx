@@ -12,7 +12,7 @@ function App() {
       <div className="flex flex-col h-screen">
         <div className="flex flex-col h-screen">
           <Header />
-          <div className="w-full overflow-y-auto h-screen">
+          <div className="w-full overflow-auto h-screen">
             <Router history={history}>
               <Switch>
                 {AppRoutes.map(({ path, component }, key) =>
@@ -26,9 +26,9 @@ function App() {
                 <Redirect from="/" to="/home" />
               </Switch>
             </Router>
-          </div>
-          <div className="absolute bottom-0 w-full">
-            <Footer />
+            {/* <div className="absolute bottom-0 w-full">
+              <Footer />
+            </div> */}
           </div>
         </div>
       </div>

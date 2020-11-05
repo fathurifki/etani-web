@@ -37,8 +37,9 @@ const request = {
             .set('Accept', 'application/json'),
 
     delete: (url, body) =>
-        superagent.delete(`${API_ROOT}${url}`, body)
+        superagent.del(`${API_ROOT}${url}`)
             .use(tokenPlugin)
+            .send(body)
             .set('Accept', 'application/json')
 }
 
@@ -77,7 +78,11 @@ const Sell = {
 }
 
 const Buy = {
-    post: (body) => request.post('/transcation/buy', body)
+    post: (body) => request.post('/transaction/buy', body)
+}
+
+const Register = {
+    post: (body) => request.post('/user/register', body)
 }
 
 export default {
@@ -88,5 +93,6 @@ export default {
     Payment,
     Profile,
     Sell,
-    Buy
+    Buy,
+    Register
 }

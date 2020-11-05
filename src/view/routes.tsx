@@ -1,11 +1,12 @@
-import Register from './Register';
-import DetailProduct from './DetailProduct';
-import Cart from './Cart';
-import Sell from './Sell';
-import Product from './Product';
-import Profile from './Profile';
 import Login from './Login';
 import Home from './Home';
+import Product from './Product';
+import Cart from './Cart';
+import Profile from './Profile';
+import Sell from './Sell';
+import DetailProduct from './DetailProduct';
+import PaymentStatus from './PaymentStatus';
+import Register from './Register';
 
 const AppRoutes = [
     {
@@ -39,6 +40,10 @@ const AppRoutes = [
     {
         path: '/profile',
         component: Profile
+    },
+    {
+        path: '/payment-status',
+        component: PaymentStatus
     },
 
 ]
