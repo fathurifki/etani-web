@@ -3,6 +3,7 @@ import * as React from 'react';
 import agent from '../../utils/agent';
 import history from '../../utils/browserHistory';
 import { createContainer } from 'react-tracked';
+import { removeCokies } from 'src/utils/cookies';
 
 interface InitialUser {
     name: any
@@ -21,6 +22,7 @@ interface InitialState {
     handleInput: Function
     handleUpdateProfile: Function
     handleCreateProfile: Function
+    logout: Function
     dataProfile: any
     errMessage: any
     user_id: any
@@ -33,6 +35,7 @@ const initialState = {
     handleInput: () => { },
     handleUpdateProfile: () => { },
     handleCreateProfile: () => { },
+    logout: () => { },
     loading: false,
     dataProfile: "",
     errMessage: "",
@@ -63,8 +66,6 @@ const {
 
 export const ProfileController = ({ children }: any) => {
     const [state, setState] = useTracked()
-
-    console.log('STATEsss', state.dataProfile)
 
     React.useEffect(() => {
         fetchProfile()
@@ -132,7 +133,6 @@ export const ProfileController = ({ children }: any) => {
     const handleInput = (e: any) => {
         const value = e.target.value
         const name = e.target.name
-        console.log('name', name)
         setState((prevState) => ({
             ...prevState,
             user: {
@@ -155,7 +155,6 @@ export const ProfileController = ({ children }: any) => {
                 loading: false,
             })
             fetchProfile()
-            console.log('DATA', data)
         } catch (error) {
             setState({
                 ...state,
@@ -178,7 +177,6 @@ export const ProfileController = ({ children }: any) => {
                 loading: false,
             })
             fetchProfile()
-            console.log('DATA', data)
         } catch (error) {
             setState({
                 ...state,
@@ -188,10 +186,21 @@ export const ProfileController = ({ children }: any) => {
         }
     }
 
+    const logout = () => {
+        removeCokies()
+        history.push('/login')
+    }
 
     return (
         <Provider>
-            <ProfileProvider value={{ ...state, fetchHistoryPayment: fetchHistoryPayment, handleInput: handleInput, handleUpdateProfile: handleUpdateProfile, handleCreateProfile: handleCreateProfile }}>
+            <ProfileProvider value={{
+                ...state,
+                fetchHistoryPayment: fetchHistoryPayment,
+                handleInput: handleInput,
+                handleUpdateProfile: handleUpdateProfile,
+                handleCreateProfile: handleCreateProfile,
+                logout: logout
+            }}>
                 {children}
             </ProfileProvider>
         </Provider>
@@ -199,7 +208,6 @@ export const ProfileController = ({ children }: any) => {
 }
 
 export const AppProviderProfile = ({ children }: any) => {
-    console.log('CHILD', children)
     return (
         <Provider>
             <ProfileController>

@@ -36,8 +36,6 @@ const SellView = () => {
 
     const handleTakePhoto = (dataUri: any) => {
         // Do stuff with the photo...
-        console.log('takePhoto', dataUri);
-        console.log('takePhoto', dataURItoBlob(dataUri))
         const data = dataURItoBlob(dataUri)
         handleImageMobileUpload(data)
     }
@@ -110,7 +108,7 @@ const SellView = () => {
 
             <div onClick={() => submitData()} className="absolute bottom-0 bg-blue-400 w-full h-16 flex flex-col justify-center items-center">
                 {
-                    loading === true ? <ReactLoading type="spokes" color="#fff" height={'6%'} width={'6%'} /> :
+                    loading === true ? <ReactLoading className="mb-5" type="spokes" color="#fff" height={'6%'} width={'6%'} /> :
                         <span>Sell</span>
                 }
             </div>

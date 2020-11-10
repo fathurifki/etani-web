@@ -1,6 +1,6 @@
 import * as React from 'react';
 import agent from '../../utils/agent';
-
+import history from '../../utils/browserHistory';
 
 interface InitialState {
     amount: any
@@ -32,14 +32,28 @@ export const DetailController = ({ children }: any) => {
         }))
     }
 
-
     const handleSubmit = async (id: number) => {
         const payload = { product_id: id, amount: state.amount }
+        setState((prevState) => ({
+            ...prevState,
+            loading: true
+        }))
         try {
             const data = await agent.Cart.postCart(payload)
-            console.log('data', data)
+            if (data.status === 200) {
+                setState((prevState) => ({
+                    ...prevState,
+                    loading: false
+                }))
+            }
+            history.push('/home')
         } catch (error) {
-            console.log('error', error)
+            if (error) {
+                setState((prevState) => ({
+                    ...prevState,
+                    loading: false
+                }))
+            }
         }
     }
 

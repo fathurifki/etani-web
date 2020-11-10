@@ -1,6 +1,6 @@
 import * as React from 'react';
 import agent from '../../utils/agent';
-
+import history from '../../utils/browserHistory';
 interface InitialState {
     handleInput: Function
     handleImageUpload: Function
@@ -88,6 +88,7 @@ export const SellController = ({ children }: any) => {
                     loading: false
                 }))
             }
+            history.push('/home')
             console.log('DATA', data)
         } catch (error) {
             if (error) {

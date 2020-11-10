@@ -3,7 +3,16 @@ import { ProfileContext } from '../controller';
 
 const ProfileView = () => {
     const controller = React.useContext(ProfileContext)
-    const { fetchHistoryPayment, handleInput, fetchProfile, dataProfile, user, handleUpdateProfile, handleCreateProfile } = controller
+    const {
+        fetchHistoryPayment,
+        handleInput,
+        fetchProfile,
+        dataProfile,
+        user,
+        handleUpdateProfile,
+        handleCreateProfile,
+        logout
+    } = controller
     const [state, setState] = React.useState({
         buttonInput: false
     })
@@ -67,7 +76,9 @@ const ProfileView = () => {
                         })} className="border border-gray-700 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-gray-800 focus:outline-none focus:shadow-outline">{user.name === null ? 'Create' : 'Edit'}</button>
                     }
                 </div>
-
+                <div className="flex flex-row justify-between">
+                    <button onClick={() => logout()} className="border border-red-500 text-black rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">Logout</button>
+                </div>
             </div>
         </div >
     );

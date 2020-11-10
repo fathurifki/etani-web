@@ -1,10 +1,11 @@
 import * as React from 'react';
+import ReactLoading from 'react-loading';
 import { useLocation } from 'react-router';
 import { DetailContext } from '../controller';
 import image from 'src/assets/image';
 
 const DetailProductView = () => {
-    const { handleSubmit, handleInput } = React.useContext(DetailContext)
+    const { handleSubmit, handleInput, loading } = React.useContext(DetailContext)
     const [state, setState] = React.useState(false)
     const [message, setMessage] = React.useState("")
 
@@ -45,7 +46,10 @@ const DetailProductView = () => {
                 </div>
             </div>
             <div onClick={() => handleSubmit(data._id)} className="absolute bottom-0 bg-blue-400 w-full h-16 flex flex-col justify-center items-center">
-                <span>Buy</span>
+                {
+                    loading === true ? <ReactLoading className="mb-5" type="spokes" color="#fff" height={'6%'} width={'6%'} /> :
+                        <span>Buy</span>
+                }
             </div>
         </div>
     );
