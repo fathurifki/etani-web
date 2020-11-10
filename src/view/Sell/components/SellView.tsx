@@ -43,16 +43,16 @@ const SellView = () => {
 
     const renderButtons = () => {
         return (
-            <div>
-                <button onClick={(e) => {
+            <div className="flex flex-row justify-between">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded-full" onClick={(e) => {
                     setIdealFacingMode(FACING_MODES.USER);
                     setIsMaxResolution(false);
-                }}> FACING_MODES.USER </button>
+                }}> Front Camera </button>
 
-                <button onClick={(e) => {
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded-full" onClick={(e) => {
                     setIdealFacingMode(FACING_MODES.ENVIRONMENT);
                     setIsMaxResolution(true);
-                }}> FACING_MODES.ENVIRONMENT & MaxResolution</button>
+                }}> Rear Camera</button>
             </div>
         );
     }

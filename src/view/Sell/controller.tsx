@@ -38,7 +38,6 @@ export const { Provider: SellProvider } = SellContext
 
 export const SellController = ({ children }: any) => {
     const [state, setState] = React.useState<InitialState>(initialState)
-    console.log('STATE', state)
     const handleInput = (val: any) => {
         const name = val.target.name
         const value = val.target.value
