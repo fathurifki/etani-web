@@ -1,12 +1,12 @@
 import * as React from 'react';
 import ProfileView from './components/ProfileView';
-import { ProfileController } from './controller';
+import { AppProviderProfile } from './controller';
 
 const Profile = () => {
     return (
-        <ProfileController>
+        <AppProviderProfile>
             <ProfileView />
-        </ProfileController>
+        </AppProviderProfile>
     )
 }
 

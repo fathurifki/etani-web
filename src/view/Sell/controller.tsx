@@ -5,6 +5,8 @@ interface InitialState {
     handleInput: Function
     handleImageUpload: Function
     submitData: Function
+    handleImageMobileUpload: Function
+    loading: any
     name: string
     category: string
     price: any
@@ -19,6 +21,7 @@ const initialState = {
     handleInput: () => { },
     handleImageUpload: () => { },
     submitData: () => { },
+    loading: false,
     name: "",
     category: "".toLowerCase(),
     price: null,
@@ -26,7 +29,8 @@ const initialState = {
     weight: "",
     description: "",
     file: "",
-    imagePreviewUrl: null
+    imagePreviewUrl: null,
+    handleImageMobileUpload: () => { }
 }
 
 export const SellContext = React.createContext<InitialState>(initialState)
@@ -34,7 +38,7 @@ export const { Provider: SellProvider } = SellContext
 
 export const SellController = ({ children }: any) => {
     const [state, setState] = React.useState<InitialState>(initialState)
-
+    console.log('STATE', state)
     const handleInput = (val: any) => {
         const name = val.target.name
         const value = val.target.value
@@ -47,12 +51,18 @@ export const SellController = ({ children }: any) => {
 
     const handleImageUpload = (event: any) => {
         event.preventDefault()
-        const reader = new FileReader()
         const files = event.target.files[0] || event.dataTransfer.files[0]
         setState((prevState) => ({
             ...prevState,
             file: files,
             imagePreviewUrl: URL.createObjectURL(event.target.files[0]),
+        }))
+    }
+
+    const handleImageMobileUpload = (val: any) => {
+        setState((prevState) => ({
+            ...prevState,
+            file: val,
         }))
     }
 
@@ -66,17 +76,39 @@ export const SellController = ({ children }: any) => {
         formData.append('weight', weight);
         formData.append('description', description);
         formData.append('product_image', file);
-
+        setState((prevState) => ({
+            ...prevState,
+            loading: true
+        }))
         try {
             const data = await agent.Sell.post(formData)
+            if (data.status === 200) {
+                setState((prevState) => ({
+                    ...prevState,
+                    loading: false
+                }))
+            }
             console.log('DATA', data)
         } catch (error) {
-            console.log('ERROR', error)
+            if (error) {
+                setState((prevState) => ({
+                    ...prevState,
+                    loading: false
+                }))
+            }
         }
     }
 
     return (
-        <SellProvider value={{ ...state, handleInput: handleInput, handleImageUpload: handleImageUpload, submitData: submitData }}>
+        <SellProvider
+            value={{
+                ...state,
+                handleImageMobileUpload: handleImageMobileUpload,
+                handleInput: handleInput,
+                handleImageUpload: handleImageUpload,
+                submitData: submitData
+            }}
+        >
             {children}
         </SellProvider>
     )

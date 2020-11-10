@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { CartContext } from '../controller';
 
@@ -39,12 +40,14 @@ const CartView = () => {
 
     return (
         <div className="flex flex-col">
-            <div className="h-full relative space-y-4 p-4">
+            <div className="h-screen flex flex-col space-y-4 p-4">
                 {renderComponent}
             </div>
-            <div onClick={() => handleCheckout(state)} className="absolute bottom-0 bg-blue-400 w-full h-16 flex flex-col justify-center items-center">
-                <span>Checkout</span>
-            </div>
+            <React.Fragment >
+                <div onClick={() => handleCheckout(state)} className="absolute max-w-md bottom-0 bg-blue-400 w-full h-16 flex flex-col justify-center items-center">
+                    <span>Checkout</span>
+                </div>
+            </React.Fragment>
         </div >
     );
 }

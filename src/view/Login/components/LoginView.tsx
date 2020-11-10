@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../controller';
 
 const LoginView = () => {
 
     const controller = React.useContext(AuthContext)
 
-    const { click, handleInput, handleLogin } = controller
+    const { handleInput, handleLogin } = controller
 
     return (
         <div>
@@ -23,10 +22,8 @@ const LoginView = () => {
                     onChange={(e) => handleInput(e)}></input>
                     </div>
                     <br/>
-                <Link to="/home">
                 <button className="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg
                 px-6 py-3 block shadow-xl hover:text-white hover:bg-black" onClick={() => handleLogin()} >Login</button>
-                </Link>
                 <span className="flex flex-col justify-center items-center mt-5">Belum Punya Akun ? Daftar Disini</span>
             </div>
         </div>

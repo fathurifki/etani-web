@@ -1,7 +1,7 @@
 import * as React from 'react';
 import agent from '../../utils/agent';
 import { setCredential } from '../../utils/cookies';
-
+import history from '../../utils/browserHistory';
 
 interface InitialState {
     data: any,
@@ -56,6 +56,8 @@ export const AuthController = ({ children }: any) => {
                 ...state,
                 loading: false
             })
+            history.push('/home')
+            window.location.reload()
             console.log('FETCH', fetchData.body.token)
             console.log('FETCH2', fetchData)
 
