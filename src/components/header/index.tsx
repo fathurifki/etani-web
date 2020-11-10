@@ -28,7 +28,7 @@ const Header = ({ showMenu, path }: any) => {
                             <span className="font-bold text-white flex flex-col justify-center">{path}</span>
                         </div> :
                         <div className="flex flex-row w-full h-16 justify-center items-center">
-                            <span className="flex flex-col">E-Tani</span>
+                            <img alt="icon" src={image.headerLogo} width={50} height={50}></img>
                         </div>
                 }
             </div>
