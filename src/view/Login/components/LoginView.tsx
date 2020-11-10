@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import * as React from 'react';
 import { AuthContext } from '../controller';
 import history from '../../../utils/browserHistory';
+import image from 'src/assets/image';
 
 const LoginView = () => {
 
@@ -11,6 +13,9 @@ const LoginView = () => {
     return (
         <div>
             <div className="container max-w-full mx-auto py-24 px-6">
+                <div className="flex flex-row justify-center items-center">
+                <img alt="icon" src={image.logo} width={150} height={100}></img>
+                </div>
                 <div className="flex flex-col">
                     <span>Username</span>
                     <input name="email" className="ext-md block px-3 py-2 rounded-lg w-full 

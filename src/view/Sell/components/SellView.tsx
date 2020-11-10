@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-array-constructor */
 import React from 'react';
 import { SellContext } from '../controller';
 import ReactLoading from 'react-loading';
-import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import { isMobile } from 'src/utils/mobileView';
 import image from 'src/assets/image';
